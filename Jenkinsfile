@@ -5,7 +5,7 @@ import groovy.json.JsonSlurperClassic
 
 def checkFirst(){
     def url = "http://localhost:8080/job/jenkins-test1/";
-    def data = sh "curl -g -u anuj:anuj http://localhost:8080/job/jenkins-test1/api/json?pretty&builds[number]"
+    def data = sh "curl -g -u anuj:anuj http://localhost:8080/job/jenkins-test1/api/json?pretty&tree=builds[number]"
     print("url", data)
 }
 
