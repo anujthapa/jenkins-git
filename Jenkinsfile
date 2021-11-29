@@ -43,7 +43,12 @@ node () {
         
     }
     stage("run another pipleine"){
-        println("pipe_one and pipe_two"+pipe_one_response+"second"+pipe_two_response)
+        if (pipe_one_response!=pipe_two_response){
+                    println("pipe_one and pipe_two"+pipe_one_response+"second"+pipe_two_response)
+        }
+        else{
+            println("no need to run other pipeline")
+        }
     }
     
 }
