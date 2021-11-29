@@ -38,7 +38,7 @@ node () {
                     echo response
                     def json = JsonOutput.toJson(response)
                     newResponse =  response.replaceAll("\n    ","")
-                   println("report"+ newResponse.items.find(number))
+                   println("report"+ newResponse.find(number))
 
                     println("buildnumber"+newResponse+"build number"+ newResponse.(number))
                 }
