@@ -23,6 +23,6 @@ node (getNode()) {
         //Use lock shared with CRT to guarantee that no deploy done during CRT
         echo "checking the api"
             
-        }
+        
     }
 }
