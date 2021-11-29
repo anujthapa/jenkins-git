@@ -13,7 +13,7 @@ def checkFirst(){
     println("url"+ build_id)
 }
 
-def sendPostRequest(urlString, ) {
+def sendPostRequest(urlString ) {
     def url = new URL(urlString)
     def conn = url.openConnection()
     conn.setDoOutput(true)
