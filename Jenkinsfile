@@ -1,9 +1,12 @@
 
-import groovy.json.JsonSlurper 
+import groovy.json.JsonSlurperClassic 
 
 
 
-def jsonSlurper = new JsonSlurper()
+@NonCPS
+def jsonParse(def json) {
+    new groovy.json.JsonSlurperClassic().parseText(json)
+}
 
 
 def checkFirst(){
@@ -17,7 +20,7 @@ def extractInts() {
                     final String response = sh(script: "curl -s $url", returnStdout: true).trim()
                     echo response
                     extractInts(response)
-                    def json = jsonSlurper.parseText(response)
+                    def json = jsonParse(response)
                     println("buildnumber"+json)
                 }
  
