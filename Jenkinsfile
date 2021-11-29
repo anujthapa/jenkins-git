@@ -2,28 +2,10 @@
 import groovy.json.JsonSlurperClassic 
 import groovy.json.JsonOutput 
 
-
-
-@NonCPS
-def jsonParse(def json) {
-    new groovy.json.JsonSlurperClassic().parseText(json)
-}
-
-
 def checkFirst(){
     def url = "http://localhost:8080/job/jenkins-test1/";
     def data = sh "curl -u anuj:anuj http://localhost:8080/job/jenkins-test1/lastSuccessfulBuild/api/json?path=/*/lastStableBuild/number"
     println("url"+ build_id)
-}
-def extractInts() {
-     script {
-                    final String url = "-u anuj:anuj http://localhost:8080/job/jenkins-test1/lastSuccessfulBuild/api/json?pretty"
-                    final String response = sh(script: "curl -s $url", returnStdout: true).trim()
-                    echo response
-                    def output = JsonOutput.toJson(response)
-                    println("buildnumber"+output)
-                }
- 
 }
 
 node () {
@@ -54,7 +36,6 @@ node () {
                     final String url = "-u anuj:anuj http://localhost:8080/job/jenkins-test1/lastSuccessfulBuild/api/json?pretty"
                     final String response = sh(script: "curl -s $url", returnStdout: true).trim()
                     echo response
-                    extractInts(response)
                     def json = jsonParse(response)
                     println("buildnumber"+json)
                 }
