@@ -26,6 +26,8 @@ node () {
 
     def tag
     def repo
+    def pipe_one_response 
+    def pipe_two_response
     stage("check") {
         //Use lock shared with CRT to guarantee that no deploy done during CRT
         echo "checking the api"
@@ -35,13 +37,13 @@ node () {
         script {
                     final String url = "-u anuj:anuj http://localhost:8080/job/jenkins-test1/api/xml?xpath=/*/lastStableBuild/number"
                     final String response = sh(script: "curl -s $url", returnStdout: true).trim()
-                    echo response
-                    def json = JsonOutput.toJson(response)
-                    newResponse =  response.replaceAll("\n    ","")
-                    println("buildnumber"+newResponse.getClass()+"build number")
-
+                    pipe_one_response = response
+                    pipe_two_response= build
                 }
         
+    }
+    stage("run another pipleine"){
+        println("pipe_one and pipe_two"+pipe_one_response+"second"+pipe_two_response)
     }
     
 }
