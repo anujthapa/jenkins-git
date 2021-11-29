@@ -1,4 +1,3 @@
-@Grab(group='com.cdancy', module='jenkins-rest', version='0.0.18')
 import groovy.json.JsonSlurperClassic
 import com.cdancy.jenkins.rest.JenkinsClient
 
