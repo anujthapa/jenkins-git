@@ -6,7 +6,7 @@ import groovy.json.JsonSlurperClassic
 def checkFirst(){
     def url = "http://localhost:8080/job/jenkins-test1/";
     def data = sh "curl -g -u anuj:anuj http://localhost:8080/job/jenkins-test1/api/json?pretty&tree=lastSuccessfulBuild[number]"
-    build_id= sh `wget http://localhost:8080/job/jenkins-test1/lastSuccessfulBuild`
+    build_id= sh "wget http://localhost:8080/job/jenkins-test1/lastSuccessfulBuild"
     println("url"+ build_id)
 }
 
