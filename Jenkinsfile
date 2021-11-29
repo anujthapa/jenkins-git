@@ -13,22 +13,6 @@ def checkFirst(){
     println("url"+ build_id)
 }
 
-def sendPostRequest(urlString ) {
-    def url = new URL(urlString)
-    def conn = url.openConnection()
-    conn.setDoOutput(true)
-    def writer = new OutputStreamWriter(conn.getOutputStream())
-
-    writer.flush()
-    String line
-    def reader = new BufferedReader(new     InputStreamReader(conn.getInputStream()))
-    while ((line = reader.readLine()) != null) {
-      println line
-    }
-    writer.close()
-    reader.close()
-}
-
 node () {
     def config;
 
