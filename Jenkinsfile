@@ -5,7 +5,7 @@ import groovy.json.JsonSlurperClassic
 
 def checkFirst(){
     def url = "http://localhost:8080/job/jenkins-test1/";
-    print("url", url)
+    println("url"+ url)
 }
 
 node () {
