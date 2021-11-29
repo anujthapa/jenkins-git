@@ -1,7 +1,10 @@
+@Grab(group='com.cdancy', module='jenkins-rest', version='0.0.18')
 import groovy.json.JsonSlurperClassic
+import com.cdancy.jenkins.rest.JenkinsClient
 
 
-node () {
+
+node (getNode()) {
     def config;
 
     sh "printenv"
@@ -22,7 +25,13 @@ node () {
     stage("check") {
         //Use lock shared with CRT to guarantee that no deploy done during CRT
         echo "checking the api"
-            
+        
+        JenkinsClient client = JenkinsClient.builder()
+            .endPoint("http://localhost:8080/job/jenkins-demo/") // Optional. Defaults to http://127.0.0.1:8080
+            .credentials("anuj:1234") // Optional.
+            .build()
+
+        println(client.api().systemApi().systemInfo())    
         
     }
 }
