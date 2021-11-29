@@ -8,7 +8,7 @@ def checkFirst(jenkins_url){
     print("url")
 }
 
-node (getNode()) {
+node () {
     def config;
 
     sh "printenv"
