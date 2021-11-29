@@ -38,7 +38,7 @@ node () {
                     final String url = "-u anuj:anuj http://localhost:8080/job/jenkins-test1/api/xml?xpath=/*/lastStableBuild/number"
                     final String response = sh(script: "curl -s $url", returnStdout: true).trim()
                     pipe_one_response = response
-                    pipe_two_response= build
+                    pipe_two_response= build_id
                 }
         
     }
