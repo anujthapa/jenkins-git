@@ -34,7 +34,6 @@ node () {
         
     }
     stage("Using curl example") {
-            steps {
                 script {
                     final String url = "http://localhost:8080/job/Demos/job/maven-pipeline-demo/job/sdkman/2/api/json"
 
@@ -42,7 +41,6 @@ node () {
 
                     echo response
                 }
-            }
         
     }
     
