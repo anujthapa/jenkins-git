@@ -39,7 +39,7 @@ node () {
                     def json = JsonOutput.toJson(response)
                     newResponse =  response.replaceAll("\n    ","")
                     println("report"+ newResponse)
-                    println("buildnumber"+newResponse.getClass()+"build number"+ newResponse.charAt(1))
+                    println("buildnumber"+newResponse.getClass()+"build number"+ newResponse.charAt(5))
                 }
         
     }
