@@ -8,9 +8,16 @@ def checkFirst(){
     def data = sh "curl -u anuj:anuj http://localhost:8080/job/jenkins-test1/lastSuccessfulBuild/api/json?path=/*/lastStableBuild/number"
     println("url"+ build_id)
 }
-def extractInts( String input ) {
- input.findAll( /\number+/ )*.toInteger()
- println("buildnumber"+input)
+def extractInts() {
+     script {
+                    final String url = "-u anuj:anuj http://localhost:8080/job/jenkins-test1/lastSuccessfulBuild/api/json?pretty"
+                    final String response = sh(script: "curl -s $url", returnStdout: true).trim()
+                    echo response
+                    extractInts(response)
+                    response.findAll( /\number+/ )*.toInteger()
+                     println("buildnumber"+input)
+                }
+ 
 }
 
 node () {
@@ -35,17 +42,9 @@ node () {
         //Use lock shared with CRT to guarantee that no deploy done during CRT
         echo "checking the api"
         checkFirst()   
-        
     }
     stage("Using curl example") {
-                script {
-                    final String url = "-u anuj:anuj http://localhost:8080/job/jenkins-test1/lastSuccessfulBuild/api/json?pretty"
-
-                    final String response = sh(script: "curl -s $url", returnStdout: true).trim()
-
-                    echo response
-                    extractInts(response)
-                }
+              extractInts() 
         
     }
     
