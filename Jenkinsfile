@@ -37,10 +37,9 @@ node () {
                     final String response = sh(script: "curl -s $url", returnStdout: true).trim()
                     echo response
                     def json = JsonOutput.toJson(response)
-                    def data = new JsonSlurperClassic().parseText(response)
-                    newResponse =  response.replaceAll("\n    ","")
+                    newResponse =  response.replaceAll("\n    ","").toJson()
                     println("report"+ newResponse)
-                    println("buildnumber"+data.getClass()+"build number"+ data)
+                    println("buildnumber"+newResponse.getClass()+"build number"+ newResponse)
                 }
         
     }
