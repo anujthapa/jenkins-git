@@ -33,7 +33,7 @@ node () {
     }
     stage("Using curl example") {
         script {
-                    final String url = "-u anuj:anuj http://localhost:8080/job/jenkins-test1/lastSuccessfulBuild/api/json | jq -r '.displayName'"
+                    final String url = "-u anuj:anuj http://localhost:8080/job/jenkins-test1/api/xml?xpath=/*/lastStableBuild/number"
                     final String response = sh(script: "curl -s $url", returnStdout: true).trim()
                     echo response
                     def json = JsonOutput.toJson(response)
