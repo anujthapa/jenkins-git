@@ -14,8 +14,10 @@ def extractInts() {
                     final String response = sh(script: "curl -s $url", returnStdout: true).trim()
                     echo response
                     extractInts(response)
-                    response.findAll( /\number+/ )*.toInteger()
-                     println("buildnumber"+input)
+                    def parser = new JsonSlurper()
+                    def json = parser.parseText(response)
+
+                    println("buildnumber"+json)
                 }
  
 }
