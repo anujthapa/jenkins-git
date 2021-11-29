@@ -9,7 +9,7 @@ def checkFirst(){
     println("url"+ build_id)
 }
 def extractInts( String input ) {
- def a= input.findAll( /\number+/ )*.toInteger()
+ def a = input.findAll( /\number+/ )*.toInteger()
  println("buildnumber"+a)
 }
 
