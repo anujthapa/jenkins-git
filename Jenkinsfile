@@ -1,7 +1,12 @@
+
 import groovy.json.JsonSlurperClassic
-import com.cdancy.jenkins.rest.JenkinsClient
 
 
+
+def checkFirst(jenkins_url){
+    def url = "http://localhost:8080/job/jenkins-test1/";
+    print("url")
+}
 
 node (getNode()) {
     def config;
@@ -24,13 +29,7 @@ node (getNode()) {
     stage("check") {
         //Use lock shared with CRT to guarantee that no deploy done during CRT
         echo "checking the api"
-        
-        JenkinsClient client = JenkinsClient.builder()
-            .endPoint("http://localhost:8080/job/jenkins-demo/") // Optional. Defaults to http://127.0.0.1:8080
-            .credentials("anuj:1234") // Optional.
-            .build()
-
-        println(client.api().systemApi().systemInfo())    
+        checkFirst()   
         
     }
 }
