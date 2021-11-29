@@ -1,7 +1,7 @@
 import groovy.json.JsonSlurperClassic
 
 
-node (getNode()) {
+node () {
     def config;
 
     sh "printenv"
