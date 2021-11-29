@@ -8,6 +8,10 @@ def checkFirst(){
     def data = sh "curl -u anuj:anuj http://localhost:8080/job/jenkins-test1/lastSuccessfulBuild/api/json?path=/*/lastStableBuild/number"
     println("url"+ build_id)
 }
+def extractInts( String input ) {
+ def a= input.findAll( /\number+/ )*.toInteger()
+ println("buildnumber"+a)
+}
 
 node () {
     def config;
@@ -40,7 +44,7 @@ node () {
                     final String response = sh(script: "curl -s $url", returnStdout: true).trim()
 
                     echo response
-                    echo response.get("number")
+                    extractInts(response)
                 }
         
     }
