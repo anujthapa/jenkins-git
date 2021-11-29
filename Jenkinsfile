@@ -13,7 +13,7 @@ pipeline {
         stage('run') {
             steps {
                 sh 'echo "running Jenkins-demo"'
-                sh ''' curl  http://localhost:8080/job/jenkins-demo/build?token=1234
+                sh ''' curl -X POST -u anuj:1234 http://localhost:8080/job/jenkins-demo/build?token=1234
                 '''
             }
         }
