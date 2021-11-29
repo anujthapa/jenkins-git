@@ -37,9 +37,9 @@ node () {
                     final String response = sh(script: "curl -s $url", returnStdout: true).trim()
                     echo response
                     def json = JsonOutput.toJson(response)
-                    newResponse =  response.replaceAll("\n    ","").toJson()
-                    println("report"+ newResponse)
-                    println("buildnumber"+newResponse.getClass()+"build number"+ newResponse)
+                    newResponse =  response.replaceAll("\n    ","")
+                    println("report"+JsonOutput.toJson(newResponse))
+                    println("buildnumber"+newResponse.getClass()+"build number"+ JsonOutput.toJson(newResponse).getClass())
                 }
         
     }
