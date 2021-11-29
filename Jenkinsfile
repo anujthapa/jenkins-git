@@ -33,13 +33,14 @@ node () {
     }
     stage("Using curl example") {
         script {
-                    final String url = "-u anuj:anuj http://localhost:8080/job/jenkins-test1/lastSuccessfulBuild/api/json?pretty"
+                    final String url = "-u anuj:anuj http://localhost:8080/job/jenkins-test1/lastSuccessfulBuild/api/json | jq -r '.displayName'"
                     final String response = sh(script: "curl -s $url", returnStdout: true).trim()
                     echo response
                     def json = JsonOutput.toJson(response)
                     newResponse =  response.replaceAll("\n    ","")
-                    println("report"+JsonOutput.toJson(newResponse))
-                    println("buildnumber"+newResponse.getClass()+"build number"+ JsonOutput.toJson(newResponse).getClass())
+                    println("buildnumber"+newResponse.getClass()+"build number")
+                    def buildName = Jenkins.instance.getItem('jenkins-test1').lastSuccessfulBuild.displayName
+
                 }
         
     }
