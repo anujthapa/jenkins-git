@@ -43,7 +43,7 @@ node () {
                     echo response
                 }
             }
-        }
+        
     }
     
 }
