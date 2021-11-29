@@ -5,7 +5,7 @@ pipeline {
             steps {
                 echo "Hello World"
                 echo "Multiline shell steps works too"
-                sh '''curl "http://localhost:8080/job/jenkins-demo/api/json"'''
+                sh '''curl -u auj:anuj "http://localhost:8080/job/jenkins-demo/api/json"'''
              
             }
         }
