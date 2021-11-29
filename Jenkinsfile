@@ -1,10 +1,10 @@
 
-import groovy.json.JsonSlurperClassic
-import groovy.json.JsonSlurper
+import groovy.json.JsonSlurper 
 
 
 
-def parser = new JsonSlurper()
+def jsonSlurper = new JsonSlurper()
+
 
 def checkFirst(){
     def url = "http://localhost:8080/job/jenkins-test1/";
@@ -17,8 +17,7 @@ def extractInts() {
                     final String response = sh(script: "curl -s $url", returnStdout: true).trim()
                     echo response
                     extractInts(response)
-                    def json = parser.parseText(response)
-
+                    def json = jsonSlurper.parseText(response)
                     println("buildnumber"+json)
                 }
  
