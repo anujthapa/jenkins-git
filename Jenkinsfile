@@ -39,7 +39,6 @@ node () {
                     def json = JsonOutput.toJson(response)
                     newResponse =  response.replaceAll("\n    ","")
                     println("buildnumber"+newResponse.getClass()+"build number")
-                    def buildName = Jenkins.instance.getItem('jenkins-test1').lastSuccessfulBuild.displayName
 
                 }
         
