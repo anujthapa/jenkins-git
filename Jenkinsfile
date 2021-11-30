@@ -53,7 +53,7 @@ node () {
     stage("run another pipleine"){
         if (pipe_one_response!=pipe_two_response){
                     println("pipe_one and pipe_two"+pipe_one_response+"second"+pipe_two_response)
-                    sh " curl -u anuj:anuj http://localhost:8080/job/jenkins-demo/buildWithParameters?token=1234 -F dryRun=true"
+                    sh " curl -u anuj:anuj http://localhost:8080/job/jenkins-demo/buildWithParameters?token=1234&name=anuj"
         }
         else{
             println("no need to run other pipeline")
