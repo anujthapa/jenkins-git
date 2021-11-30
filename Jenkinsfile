@@ -54,7 +54,7 @@ node () {
         if (pipe_one_response!=pipe_two_response){
                     println("pipe_one and pipe_two"+pipe_one_response+"second"+pipe_two_response)
                     def a ="http://localhost:8080/job/jenkins-demo/buildWithParameters?name=anuj&token=1234"
-                    sh "curl-u anuj:anuj "&a""
+                    sh '''curl-u anuj:anuj "&a"'''
         }
         else{
             println("no need to run other pipeline")
