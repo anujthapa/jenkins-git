@@ -53,7 +53,7 @@ node () {
     stage("run another pipleine"){
         if (pipe_one_response!=pipe_two_response){
                     println("pipe_one and pipe_two"+pipe_one_response+"second"+pipe_two_response)
-                   def url ="-u anuj:anuj http://localhost:8080/job/jenkins-demo/buildWithParameters?name=anuj"
+                   def url ="-u anuj:anuj http://localhost:8080/job/jenkins-demo/buildWithParameters?name=anuj&token="1234"
                      sh(script: "curl -s $url", returnStdout: true).trim()
         }
         else{
